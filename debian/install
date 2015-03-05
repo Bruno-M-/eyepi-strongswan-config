@@ -1,0 +1,5 @@
+src/eyepi-gen-ca-cert.sh	usr/sbin
+src/eyepi-gen-client-cert.sh	usr/sbin
+config/clients/*		usr/share/strongswan/templates/config/eyepibot
+config/eyepi/conf.d		etc/ipsec.d
+config/ipsec.conf.eyepi		etc

@@ -1,0 +1,14 @@
+
+Source: eyepi-strongswan-config
+Section: admin
+Priority: important
+Maintainer: Bruno Maitre <bruno.maitre@gmail.com>
+Build-Depends: debhelper (>= 7.0.0~), config-package-dev (>= 5.0), strongswan
+Standards-Version: 3.9.2
+
+Package: eyepi-strongswan-config
+Architecture: all
+Depends: ${misc:Depends}, strongswan
+Provides: ${diverted-files}
+Conflicts: ${diverted-files}
+Description: Eye Pi strongswan configuration

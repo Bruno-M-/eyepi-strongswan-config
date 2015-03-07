@@ -1,14 +1,5 @@
 #!/bin/bash
 
-set -x
-
-ipsec pki --gen --type rsa --size 2048 \
-	  --outform pem \
-	  > private/debian_key.pem
-chmod 600 private/debian_key.pem
-
-#!/bin/bash 
-
 if [ "$(id -u)" -ne "0" ]
 then
 	echo "You must be root"
@@ -26,12 +17,16 @@ fi
 CN=${1}
 FILE_DIR=/root/${CN}_secrets
 
+CA_PRIV_KEY=/etc/ipsec.d/private/strongswan_key.pem
+CA_CERT=/etc/ipsec.d/cacerts/strongswan_cert.pem
+
 echo "=== Generating ${CN} certifcate =="
 
 echo "-- Private key --"
 
 FILE_KEY=${FILE_DIR}/private/${CN}_key.pem
 
+[ ! -d $(dirname ${FILE_KEY}) ] && mkdir -p $(dirname ${FILE_KEY})
 if ! ipsec pki --gen --type rsa --size 4096 \
 	       --outform pem \
 	       > ${FILE_KEY}
@@ -53,6 +48,7 @@ echo "-- Certificate --"
 
 FILE_CERT=${FILE_DIR}/certs/${CN}_cert.pem
 
+[ ! -d $(dirname ${FILE_CERT}) ] && mkdir -p $(dirname ${FILE_CERT})
 if ! ipsec pki --pub --in ${FILE_KEY} --type rsa | \
 	   ipsec pki --issue --lifetime 365 \
 		     --cacert ${CA_CERT} \

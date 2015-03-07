@@ -3,3 +3,4 @@ src/eyepi-gen-client-cert.sh	usr/sbin
 config/conf.d			etc/ipsec.d
 config/ipsec.conf.eyepi		etc
 config/clients/*		usr/share/strongswan/templates/config/eyepibot
+config/bcm2708-rng		etc/modules-load.d

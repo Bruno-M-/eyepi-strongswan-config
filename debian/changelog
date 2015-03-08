@@ -1,3 +1,12 @@
+eyepi-strongswan-config (1.1) unstable; urgency=medium
+
+  * Fix install
+  * Update eyepi-gen-client-cert.sh
+  * Add rng-tools and bcm2708 module to get a better entropy
+  * Change cert name in Debian ipsec.conf to be compliant with generated certificate name
+
+ -- Bruno Maitre <bruno.maitre@gmail.com>  Sun, 08 Mar 2015 03:35:36 +0100
+
 eyepi-strongswan-config (1.0) unstable; urgency=medium
 
   * Initial release.

@@ -24,7 +24,7 @@ echo "=== Generating ${CN} certifcate =="
 
 echo "-- Private key --"
 
-FILE_KEY=${FILE_DIR}/private/${CN}_key.pem
+FILE_KEY=${FILE_DIR}/ipsec.d/private/${CN}_key.pem
 
 [ ! -d $(dirname ${FILE_KEY}) ] && mkdir -p $(dirname ${FILE_KEY})
 if ! ipsec pki --gen --type rsa --size 4096 \
@@ -46,7 +46,7 @@ echo "-- Done --"
 
 echo "-- Certificate --"
 
-FILE_CERT=${FILE_DIR}/certs/${CN}_cert.pem
+FILE_CERT=${FILE_DIR}/ipsec.d/certs/${CN}_cert.pem
 
 [ ! -d $(dirname ${FILE_CERT}) ] && mkdir -p $(dirname ${FILE_CERT})
 if ! ipsec pki --pub --in ${FILE_KEY} --type rsa | \
@@ -88,6 +88,15 @@ then
 	[ -e ${FILE_SEC} ] && rm ${FILE_SEC}
 	exit 1
 fi
+echo "-- Done --"
+
+echo "-- Save strongswan CA --"
+
+DIR_CA=${FILE_DIR}/ipsec.d/cacerts
+
+[ ! -d ${DIR_CA} ] && mkdir -p ${DIR_CA}
+cp ${CA_CERT} ${DIR_CA}
+
 echo "-- Done --"
 
 echo "=== ${CN} certificate generated ==="

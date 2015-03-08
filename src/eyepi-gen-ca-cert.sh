@@ -49,9 +49,4 @@ echo "-- Done --"
 
 echo "=== Strongswan CA generated ==="
 
-for client in Debian eyepi
-do
-	eyepi-gen-client-cert.sh ${client}
-done
-
 exit 0

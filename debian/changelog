@@ -1,3 +1,9 @@
+eyepi-strongswan-config (1.2) unstable; urgency=medium
+
+  * Fix install file
+
+ -- Bruno Maitre <bruno.maitre@gmail.com>  Sun, 08 Mar 2015 04:15:40 +0100
+
 eyepi-strongswan-config (1.1) unstable; urgency=medium
 
   * Fix install

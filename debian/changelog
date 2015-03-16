@@ -1,3 +1,11 @@
+eyepi-strongswan-config (1.5) unstable; urgency=medium
+
+  * Fix missing semicolon
+  * Add title display before asking question in client certificate script
+  * Fix ipsec.secrets configuration for gateway certificate
+
+ -- Bruno Maitre <bruno.maitre@gmail.com>  Mon, 16 Mar 2015 13:53:20 +0100
+
 eyepi-strongswan-config (1.4) unstable; urgency=medium
 
   * Add libcharon-extra-plugins and openssl dependencies

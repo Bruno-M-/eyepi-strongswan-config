@@ -7,19 +7,20 @@ then
 	exit 1
 fi
 
-if [ -z "${1}" ]
+read -p "Please provide a common name: " CN
+
+if [ -z "${CN}" ]
 then
-	echo "Please provide a common name"
-	echo "Example: $0 foo"
+	echo "Error empty common name"
 	exit 1
 fi
 
-CN=${1}
 FILE_DIR=/root/${CN}_secrets
 
 CA_PRIV_KEY=/etc/ipsec.d/private/strongswan_key.pem
 CA_CERT=/etc/ipsec.d/cacerts/strongswan_cert.pem
 
+echo ""
 echo "=== Generating ${CN} certifcate =="
 
 echo "-- Private key --"
@@ -62,6 +63,17 @@ then
 	[ -e ${FILE_CERT} ] && rm ${FILE_CERT}
 	exit 1
 fi
+#Copy client certificate to Gateway certs directory
+cp ${FILE_CERT} /etc/ipsec.d/certs/
+
+echo "-- Done --"
+
+echo "-- Convert to PKCS#12 --"
+
+FILE_P12=${FILE_DIR}/${CN}_cert.p12
+
+openssl pkcs12 -export -inkey ${FILE_KEY} -in ${FILE_CERT} -name "${CN}" -certfile ${CA_CERT} -caname "strongswan" -out ${FILE_P12}
+
 echo "-- Done --"
 
 echo "-- ipsec secret file --"
@@ -79,6 +91,12 @@ cat > ${FILE_SEC} << EOF
  : RSA ${CN}_key.pem
 
 EOF
+
+read -p "Please provide a login: " LOGIN
+echo ""
+read -p "Please provide a password: " PASSWD
+
+echo "${LOGIN} : EAP \"${PASSWD}\"" >> /etc/ipsec.secrets
 
 if ! chmod 600 ${FILE_SEC}
 then

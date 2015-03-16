@@ -1,7 +1,7 @@
 src/eyepi-gen-ca-cert.sh	usr/sbin
+src/eyepi-gen-gtw-cert.sh	usr/sbin
 src/eyepi-gen-client-cert.sh	usr/sbin
 src/eyepi-gen-certs.sh		usr/sbin
 config/conf.d			etc/ipsec.d
 config/ipsec.conf.eyepi		etc
-config/clients/*		usr/share/strongswan/templates/config/eyepibot
 config/bcm2708-rng.conf		etc/modules-load.d

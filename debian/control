@@ -7,7 +7,7 @@ Standards-Version: 3.9.2
 
 Package: eyepi-strongswan-config
 Architecture: all
-Depends: ${misc:Depends}, strongswan, rng-tools
+Depends: ${misc:Depends}, strongswan, libcharon-extra-plugins, openssl, rng-tools
 Provides: ${diverted-files}
 Conflicts: ${diverted-files}
 Description: Eye Pi strongswan configuration

@@ -10,7 +10,7 @@ eyepi-gen-gtw-cert.sh
 while true; do
 	read -p "Do you want to generate a client certificate ? " yn
 	case $yn in
-		[Yy]* ) eyepi-gen-client-cert.sh;
+		[Yy]* ) eyepi-gen-client-cert.sh;;
 		[Nn]* ) exit;;
 		* ) echo "Please answer yes or no.";;
 	esac

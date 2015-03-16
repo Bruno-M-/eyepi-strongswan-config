@@ -62,7 +62,7 @@ echo "-- Done --"
 
 echo "-- ipsec secret file --"
 
-FILE_SEC=${FILE_DIR}/ipsec.secrets
+FILE_SEC=/etc/ipsec.secrets
 
 echo "" >> ${FILE_SEC}
 echo " : RSA eyepi_key.pem" >> ${FILE_SEC}

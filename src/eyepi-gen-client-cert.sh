@@ -7,6 +7,8 @@ then
 	exit 1
 fi
 
+echo "=== Generating client certifcate ==="
+echo ""
 read -p "Please provide a common name: " CN
 
 if [ -z "${CN}" ]
@@ -21,7 +23,7 @@ CA_PRIV_KEY=/etc/ipsec.d/private/strongswan_key.pem
 CA_CERT=/etc/ipsec.d/cacerts/strongswan_cert.pem
 
 echo ""
-echo "=== Generating ${CN} certifcate =="
+echo "=== Generating ${CN} certifcate ==="
 
 echo "-- Private key --"
 

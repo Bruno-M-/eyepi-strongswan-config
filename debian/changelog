@@ -1,3 +1,14 @@
+eyepi-strongswan-config (1.4) unstable; urgency=medium
+
+  * Add libcharon-extra-plugins and openssl dependencies
+  * Remove old ipsec test connection and add roadwarrior nexus config
+  * Update scripts building certificates
+  * Remove old ipsec test conf
+  * Update install file
+  * Lower debug level for packet encoding/decoding encryption/decryption operations
+
+ -- Bruno Maitre <bruno.maitre@gmail.com>  Mon, 16 Mar 2015 11:12:11 +0100
+
 eyepi-strongswan-config (1.3) unstable; urgency=medium
 
   * Update certificates and key generation scripts
